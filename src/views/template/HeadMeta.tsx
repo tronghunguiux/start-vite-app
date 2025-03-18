@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 
 interface HeadMetaProps {
@@ -60,6 +61,7 @@ const HeadMeta: React.FC<HeadMetaProps> = ({
             {/* {Children} */}
             {/* { linkcss && <link rel="stylesheet" href={linkcss} /> } */}
             {/* Import nhiều file CSS */}
+            <link rel="stylesheet" href="/assets/cssmin/icons.css" />
             {linkcss.length > 0 &&
                 linkcss.map((href, index) => (
                     <link key={index} rel="stylesheet" href={href} />

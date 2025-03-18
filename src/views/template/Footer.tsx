@@ -1,13 +1,14 @@
 import Link from "next/link";
 import InstallButton from "../components/InstallButton";
 import Image from "next/image";
+import BottomNavigation from "../components/BottomNavigation";
 
 
 const Footer = () => {
     return (
         <>
             <footer id="footer" className="bg-[#2a313c]">
-                <div className="container">
+                <div className="container mx-auto">
                     <InstallButton />
                 </div>
                 <div className="pt-2 flex flex-col justify-center item-center">
@@ -128,8 +129,8 @@ const Footer = () => {
                     Copyright © 2009 - 2025 Webike Japan All Rights Reserved.
                 </p>
             </footer>
-            <div className="h-10 bg-red-300 sticky bottom-0">
-
+            <div className="bg-white sticky bottom-0 border-t border-solid">
+                <BottomNavigation />
             </div>
         </>
     );
