@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import PopupBox from './PopupBox';
 import { useState } from 'react';
 
+import DrawerNavitionLeft from '../template/DrawerNavitionLeft'; // We'll create this next
+
 const BottomNavigation = () => {
     const router = useRouter();
     const currentPath = router.pathname;
@@ -43,6 +45,8 @@ const BottomNavigation = () => {
         setPopupOpen(true);
     };
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+
     const navPaths = navItems.map(item => item.path);
     if (!navPaths.includes(currentPath)) {
         return (
@@ -72,7 +76,7 @@ const BottomNavigation = () => {
                             </div>
                         ))}
                         <div className="flex-1 w-1/6 px-05 text-center text-sm nav-link ">
-                            <button type="button" onClick={handleOpenPopup} className="btn btn-icon none-bg" aria-label="Menu">
+                            <button type="button" onClick={() => setIsDrawerOpen(true)} className="btn btn-icon none-bg" aria-label="Menu">
                                 <i className="icon icon-menu_line"></i>
                                 <p className="leading-[1.2] text-[#27272A] pt-[4px] label-nav">分類</p>
                             </button>
@@ -85,6 +89,7 @@ const BottomNavigation = () => {
 
                 </div>
             </PopupBox>
+            <DrawerNavitionLeft isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
         </>
     );
 };
