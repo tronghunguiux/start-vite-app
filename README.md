@@ -39,5 +39,66 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
 
+## Style
+
+### Deploy for dev
 sass --watch ./src/assets/styles:./public/assets/css
-sass --watch ./src/scss:./public/assets/cssmin --style compressed --no-source-map
+npm run build:dev
+
+### Deploy for prod
+sass ./src/scss:./public/assets/cssmin --style compressed --no-source-map
+
+
+
+## SOURCES STRUCTURE
+
+vite-app/
+├── public/                  # Chứa các tệp tĩnh
+│   ├── assets/              # Tài nguyên tĩnh (hình ảnh, font, CSS...)
+│   │   ├── images/          # Thư mục hình ảnh
+│   │   ├── fonts/           # Thư mục font
+│   │   └── css/             # Thư mục CSS
+│   ├── favicon.ico          # Biểu tượng ứng dụng
+│   └── manifest.json        # Cấu hình PWA
+├── src/                     # Thư mục mã nguồn chính
+│   ├── components/          # Các component tái sử dụng
+│   │   ├── ui/              # Component UI chung (Button, Modal, Input...) 
+│   │   └── layouts/         # Component bố cục (Header, NavBar, Footer....)
+│   ├── hooks/               # Custom hooks (useAuth, useTheme)
+│   ├── utils/               # Hàm tiện ích (formatDate, debounce)
+│   ├── pages/               # Các trang (Page Router)
+│   │   ├── _app.tsx         # Component App tùy chỉnh
+│   │   ├── _document.tsx    # Component Document tùy chỉnh
+│   │   ├── index/           # Trang chủ
+│   │   │   └── index.tsx    # File trang chủ
+│   │   ├── about/           # Trang giới thiệu
+│   │   │   └── index.tsx    # File trang giới thiệu
+│   │   ├── dashboard/       # Trang dashboard
+│   │   │   └── index.tsx    # File trang dashboard
+│   │   └── login/           # Trang đăng nhập
+│   │       └── index.tsx    # File trang đăng nhập
+│   ├── services/            # Dịch vụ API
+│   │   ├── authService.ts   # Dịch vụ xác thực
+│   │   └── userService.ts   # Dịch vụ người dùng
+│   ├── config/              # Cấu hình chung
+│   │   ├── axios.ts         # Cấu hình Axios
+│   │   ├── env.ts           # Quản lý biến môi trường
+│   │   └── theme.ts         # Cấu hình giao diện
+│   ├── contants             # # Các hằng số, routes, colors... 
+│   ├── types/               # Định nghĩa kiểu TypeScript
+│   │   ├── user.ts          # Kiểu dữ liệu user
+│   │   └── auth.ts          # Kiểu dữ liệu xác thực
+│   └── api-data/            # JSON mô phỏng dữ liệu API
+│       ├── users.json       # Dữ liệu users giả lập
+│       └── posts.json       # Dữ liệu posts giả lập
+├── .env                     # Biến môi trường (default development)
+├── .env.dev                 # Biến môi trường development
+├── .env.example             # Biến môi trường exam
+├── .env.local               # Biến môi trường được tại local (privited) 
+├── .env.prod                # Biến môi trường production 
+├── next.config.js      # Cấu hình Next.js
+├── next-env.d.ts       # Định nghĩa kiểu TypeScript
+├── eslint.config.mjs   # Cấu hình ESLint
+├── tsconfig.json       # Cấu hình TypeScript (nếu dùng)
+├── package.json        # Quản lý dependencies
+└── README.md           # Documents 

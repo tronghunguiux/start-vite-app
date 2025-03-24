@@ -3,7 +3,6 @@ import InstallButton from "../components/InstallButton";
 import Image from "next/image";
 import BottomNavigation from "../components/BottomNavigation";
 
-
 const Footer = () => {
     return (
         <>
